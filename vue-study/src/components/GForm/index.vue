@@ -6,6 +6,14 @@
 
 <script>
 export default {
+  props:{
+    value: {
+      type: Object
+    },
+    rules: {
+      type: Object
+    }
+  },
   data(){
     return{
 
