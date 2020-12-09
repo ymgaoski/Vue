@@ -1,6 +1,6 @@
 <template>
   <div class="com-container">
-    <input class="g-input" :value="value" v-bind="$attrs" @input="onInput"/>
+    <input class="g-input" :type="type" :value="value" v-bind="$attrs" @input="onInput" @blur="onBlur"/>
   </div>
 </template>
 
@@ -9,6 +9,10 @@ export default {
   props: {
     value:{
       type: String
+    },
+    type: {
+      type: String,
+      default: 'text'
     }
   },
   data(){
@@ -20,7 +24,17 @@ export default {
 
     // 输入框改变
     onInput(e){
+      
+      // 值改变的回调
       this.$emit('input',e.target.value);
+
+      // 调用父级，GFormItem 来进行 校验，TODO: $parent 耦合性太强，需要优化
+      this.$parent.$emit('validate');
+    },
+
+    // 失去焦点
+    onBlur(){
+      this.$parent.$emit('validate');
     }
   }
 }
