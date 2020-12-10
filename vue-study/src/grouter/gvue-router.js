@@ -28,10 +28,12 @@ class GVueRouter{
 // 浏览器hash值改变事件 
 function onHashCahnge(e){
 
-  console.log(this,'onHashCahnge');
+  console.log(window.location,'onHashCahnge');
 
   // 去掉第一个#号,更新 current
-  this.current = window.location.hash.slice(1);
+  if (window.location.hash){
+    this.current = window.location.hash.slice(1);
+  }
 }
 
 GVueRouter.install = function(_Vue){

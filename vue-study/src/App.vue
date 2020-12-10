@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
+      <router-link to="/vuex">Vuex</router-link> |
       <router-link to="/form">表单组件</router-link> |
       <router-link to="/notice">消息通知组件</router-link>
     </div>

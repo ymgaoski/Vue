@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 // import router from './router'
 import router from './grouter'
-import store from './store'
+// import store from './store'
+import store from './gstore'
+
 // 通知插件
 import NoticePlugin from './plugins/noticePlugin'
 
