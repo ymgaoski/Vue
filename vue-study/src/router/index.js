@@ -23,6 +23,12 @@ const routes = [
     name: 'Form',
     component: () => import('../views/Form.vue')
   },
+  {
+    path: '/notice',
+    name: 'Notice',
+    component: () => import('../views/Notice.vue')
+  },
+  
 ]
 
 const router = new VueRouter({
