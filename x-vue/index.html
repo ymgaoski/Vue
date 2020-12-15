@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XVue</title>
+</head>
+<body>
+  <!-- <h2>手写Vue</h2> -->
+  <div id="app">
+    <div>
+      <span>一级属性</span>
+      <h3 title="一级属性">{{title}}</h3>
+    </div>
+
+    <div>
+      二级属性
+      <h3>{{user.token}}</h3>
+    </div>
+
+    <div>
+      v-text:
+      <h1 v-text="user.nickName"></h1>
+    </div>
+    
+    <div>
+      v-html:
+      <div v-html="desc"></div>
+    </div>
+  </div>
+</body>
+
+<!-- <script src="defProp.js"></script> -->
+<script src="xvue/compiler.js"></script>
+<script src="xvue/xvue.js"></script>
+<script>
+  const xvue = new XVue({
+    el: '#app',
+    data: {
+      title: 'xgao',
+      desc: '<h1 style="color:red;">好好学习，天天向上！</h1>',
+      user: {
+        token: 'S123',
+        nickName: '悠悠清风',
+      }
+    }
+  });
+</script>
+</html>

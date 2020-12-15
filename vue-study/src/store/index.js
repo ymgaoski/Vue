@@ -7,6 +7,11 @@ export default new Vuex.Store({
   state: {
     count: 0
   },
+  getters:{
+    countDesc(state){
+      return state.count + '个'
+    }
+  },
   mutations: {
     add(state,num){
       state.count += num;

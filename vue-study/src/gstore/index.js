@@ -1,5 +1,4 @@
 import Vue from 'vue'
-// import Vuex from 'vuex'
 import Vuex from './gvuex'
 
 Vue.use(Vuex)
@@ -7,6 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     count: 0
+  },
+  getters:{
+    countDesc(state){
+      return state.count + '个'
+    }
   },
   mutations: {
     add(state,num){

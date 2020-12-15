@@ -9,16 +9,29 @@ class Store{
         this.$opitons = options;
         this._mutations = options.mutations;
         this._actions = options.actions;
+        
+        console.log(options,'options');
 
         // 设置state数据为响应式的
-        this.state = new Vue({
-            data: options.state
+        // 使用 $$ 符号,Vue不做代理,外面是不可访问的
+        this._vm = new Vue({
+            data: {
+              $$state: options.state
+            },
         })
 
         // 指定函数调用里面始终使用 绑定的this做为上下文
         // 解决下面commit在使用dispatch中调用时this指向问题
         this.commit = this.commit.bind(this);
         this.dispatch = this.dispatch.bind(this);
+    }
+
+    get state(){
+      return this._vm._data.$$state;
+    }
+
+    set state(val){
+      console.error('谁告诉你 state可以直接改的？');
     }
 
     // 用于mutations提交到state
