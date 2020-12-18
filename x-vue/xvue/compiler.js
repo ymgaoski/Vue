@@ -64,7 +64,7 @@ class Compiler{
           // 提取命令 text | html
           const command = attr.nodeName.slice(2);
           // 执行命令 textUpdater | htmlUpdater
-          this.update(node,data,command);
+          this.update(node,exp,command);
         }
       })
 
@@ -76,10 +76,9 @@ class Compiler{
 
     // 上次正则匹配中 {{name}} 获取name文本值
     const exp = RegExp.$1;
-    const data = Compiler.getExpValue(this.$vm,exp);
     
     // 更新文本
-    this.update(node,data,'text');
+    this.update(node,exp,'text');
   }
 
   // 更新函数作用：
@@ -87,14 +86,16 @@ class Compiler{
   // 2.创建Watcher实例
   update(node,exp,command){
     
+    const data = Compiler.getExpValue(this.$vm,exp);
+
     // 更新
     const fn = this[`${command}Updater`];
     fn && fn(node,data);
     
     // 创建观察者，并添加到 Dep列队中
     new Watcher(this.$vm,exp,(newVal) => {
-      // 执行命令 textUpdater
-      this.update(node,newVal,'text');
+      // 执行命令
+      fn && fn(node,newVal);
     });
   }
 
