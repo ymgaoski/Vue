@@ -27,6 +27,11 @@
       v-html:
       <div v-html="desc"></div>
     </div>
+
+    <div>
+      v-model:
+      <input type="text" v-model="title">
+    </div>
   </div>
 </body>
 
@@ -45,5 +50,12 @@
       }
     }
   });
+
+  // 模拟持续更新
+  let count = 1;
+  setInterval(() => {
+    xvue.title = '文本更新-' + count;
+    count++;
+  }, 3000);
 </script>
 </html>
