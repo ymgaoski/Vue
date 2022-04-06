@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Vue源码实战</title>
 </head>
 <body>
   <!-- <div id="app" class="test" style="background:red;color:green;" age=30><span>{{name}}</span></div> -->
@@ -14,8 +14,9 @@
       计算属性中的值应该记录 计算属性watcher 和 渲染watcher，这样值被更新的时候才能调用渲染watcher去更新页面
    -->
   <div id="app">
-    <my-button></my-button>
+    
   </div>
+  <!-- <my-button></my-button> -->
   <!-- hello - {{name}} - {{clazz.t}} - {{name}} -world -->
   <!-- <div>{{likes}}</div> -->
   <!-- <div>{{list}}</div> -->
@@ -118,7 +119,7 @@
 
   });
 
-  console.log(vm,'vm');
+  // console.log(vm,'vm');
   // console.log(vm.name,'name');
   // console.log(vm.likes,'vm.likes');
   

@@ -79,3 +79,39 @@ export default Vue;
  *  挂载到真实DOM时： child => parent
  *  
  */
+
+
+
+import {compileToFunction} from './complier/index.js'
+import {patch,createEl} from './vdom/patch.js'
+
+// diff核心
+// 旧的
+let oldTemplate = `<div style="color:green;background:yellow;" a="1">
+  <li key="C">C</li>
+  <li key="A">A</li>
+  <li key="B">B</li>
+  <li key="D">D</li>
+</div>`;
+
+let vm1 = new Vue({data:{message: 'hello'}});
+const render1 = compileToFunction(oldTemplate);
+const oldVnode = render1.call(vm1); // 虚拟dom
+document.body.appendChild(createEl(oldVnode));
+
+
+// 新的
+let newTemplate = `<div style="color:Red" b="2">
+  <li key="B">B</li>
+  <li key="C">C</li>
+  <li key="D">D</li>
+  <li key="A">A</li>
+</div>`;
+let vm2 = new Vue({data:{message:'xgao'}});
+const render2 = compileToFunction(newTemplate);
+const newVnode = render2.call(vm2);
+
+// 根据新的虚拟节点更新老节点，老的能复用尽量复用
+setTimeout(() => {
+  patch(oldVnode,newVnode);
+}, 2000);
