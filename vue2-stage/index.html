@@ -14,7 +14,7 @@
       计算属性中的值应该记录 计算属性watcher 和 渲染watcher，这样值被更新的时候才能调用渲染watcher去更新页面
    -->
   <div id="app">
-    
+    <div>{{name}}</div>
   </div>
   <!-- <my-button></my-button> -->
   <!-- hello - {{name}} - {{clazz.t}} - {{name}} -world -->
@@ -53,7 +53,7 @@
       }
     },
     data: {
-      name: 'xgao',
+      name: '你好',
       age: 100,
       clazz:{
         t:'301'
@@ -134,7 +134,7 @@
 
   setTimeout(function(){
     // vm.name = '完美';
-    // vm.name = '666';
+    vm.name = '666';
     //vm.clazz.t = '405';
     
     // vm.likes.push({name:'t4',val:4});
@@ -150,7 +150,8 @@
 
     // 没用哪里调用(get)，就不会去收集依赖，就算去修改age，也不会重新更新页面数据
     // vm.age = 20;
-  }, 5000);
+
+  }, 3000);
   
 </script>
 </html>

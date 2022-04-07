@@ -6,9 +6,16 @@ export function lifecycleMixin(Vue){
 
   Vue.prototype._update = function(vnode){
     let vm = this;
-
-    // 根据虚拟DOM替换真实DOM
-    vm.$el = patch(vm.$el,vnode);
+    let preVnode = vm._vnode;
+    if (!preVnode){
+      // 初次渲染
+      // 根据虚拟DOM替换真实DOM
+      vm.$el = patch(vm.$el,vnode);
+    }else{
+      // 更新渲染,拿上次的旧节点和当前新节点比较
+      vm.$el = patch(preVnode,vnode);
+    }
+    vm._vnode = vnode;
   }
 
   // 扩展nextTick
